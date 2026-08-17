@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release
+      # Unit tests cover diff.rs (SQL-diff correctness incl. NULL handling)
+      # and the schema/batch-building logic in iceberg_sink.rs / gold.rs —
+      # all pure, no external services. Full pipeline verification (against
+      # a real Iceberg REST catalog + DuckDB) is documented in the README's
+      # Quickstart and run manually, not in CI.
+      - run: cargo test --release

@@ -1,0 +1,9 @@
+{
+  "name": "@jessevent/icebridge-restore",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@supabase/lite": "0.8.0"
+  }
+}

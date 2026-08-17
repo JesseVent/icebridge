@@ -1,0 +1,19 @@
+[package]
+name = "icebridge"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "SQLite -> Litestream -> Iceberg-on-S3 Bronze/Gold pipeline with DuckDB aggregation sync-back"
+repository = "https://github.com/JesseVent/icebridge"
+
+[dependencies]
+anyhow = "1.0.104"
+arrow-array = "58.4"
+arrow-schema = "58.4"
+iceberg = "0.10.1"
+iceberg-catalog-rest = "0.10.1"
+iceberg-storage-opendal = "0.10.1"
+parquet = "58.4"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+serde_json = "1.0.151"
+tokio = { version = "1.53.1", features = ["full"] }
